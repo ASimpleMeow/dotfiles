@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Script to rebase all patches branch onto master branch (basically update them)
+
+suckdiff &&
+git checkout master &&
+git reset --hard origin/master &&
+for branch in $(git for-each-ref --format='%(refname)' refs/heads/ | cut -d '/' -f3); do
+    if [ "$branch" != "master" ]; then
+        git rebase $branch || (echo "CONFLICT REBASING $branch" && exit)
+    fi
+done
+make clean && sudo make install

@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =6
+let g:netrw_dirhist_6='/home/oleks/.config/zsh/plugins'
+let g:netrw_dirhist_5='/home/oleks/.config/zsh/prompt'
+let g:netrw_dirhist_4='/etc/X11/xorg.conf.d'
+let g:netrw_dirhist_3='/etc/runit/runsvdir/default/NetworkManager'
+let g:netrw_dirhist_2='/home/oleks/.config/X11'
+let g:netrw_dirhist_1='/etc/cron.d'

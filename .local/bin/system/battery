@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# Script to get battery
+
+battery_path=/sys/class/power_supply/BAT0/
+battery_percentage=$(cat $battery_path/capacity)
+battery_status=$(cat $battery_path/status)
+
+echo $battery_status  $battery_percentage

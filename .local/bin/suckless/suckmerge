@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Script used for quick merging of all suckless patches
+
+suckdiff &&
+git checkout master &&
+git reset --hard origin/master &&
+for branch in $(git for-each-ref --format='%(refname)' refs/heads/ | cut -d'/' -f3); do
+	if [ "$branch" != "master" ]; then
+    git merge $branch -m $branch || (echo "CONFLICT MERGING $branch" && exit)
+	fi
+done
+make clean && sudo make install && git clean -fx && git checkout master
