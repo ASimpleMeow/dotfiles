@@ -27,6 +27,7 @@ alias grep='grep --color=auto'
 ##########
 
 alias xi='sudo pacman -S'
+alias xu='sudo pacman -Syu'
 alias xq='sudo pacman -Ss'
 alias xr='sudo pacman -Rs'
 
@@ -51,7 +52,6 @@ alias svim='sudo nvim'
 # Directories #
 ###############
 
-alias r="$HOME/repos"
 alias p="$HOME/pictures"
 alias d="$HOME/downloads"
 alias m="$HOME/music"
