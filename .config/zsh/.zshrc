@@ -45,6 +45,13 @@ autoload -Uz prompt_setup; prompt_setup
 
 
 ###############
+# ZSH VI MODE #
+###############
+
+source $XDG_CONFIG_HOME/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+
+
+###############
 # COMPLETIONS #
 ###############
 
