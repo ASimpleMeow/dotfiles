@@ -13,7 +13,7 @@ mkdir -p "$diffdir" &&
 mv "$diffdir"*.diff "$olddiffdir" || true &&
 make clean && rm -f config.h && git reset --hard origin/master &&
 for branch in $(git for-each-ref --format='%(refname)' refs/heads/ | cut -d'/' -f3); do
-	if [ "$branch" != "master" ]; then
+	if [ "$branch" != "master" || "$branch" != "main" ]; then
 		file=$diffdir$project_$branch.diff
 		git diff master..$branch > $file
 	fi
