@@ -3,7 +3,7 @@
 ## Script which is run when startx is starting X11 Server
 
 # Initial setup
-setbg &                 # Setting background
+setbg                   # Setting background
 xset r rate 300 50 &    # Speed xrate up
 
 autostart="xcompmgr dunst dwmblocks"
