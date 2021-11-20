@@ -40,8 +40,5 @@ export HISTFILE=$XDG_CONFIG_HOME/zsh/.zhistory
 export HISTSIZE=1000000
 export SAVEHIST=1000000
 
-# GPG
-export GPG_TTY=$(tty)
-
 # PASS
 export PASSWORD_STORE_DIR=$HOME/sync/PW

@@ -11,6 +11,8 @@
 # ZSH OPTIONS #
 ###############
 
+export GPG_TTY=$TTY
+
 # NAVIGATION OPTIONS #
 setopt AUTO_CD 		#Go to directory without cd command
 setopt NO_BEEP		#Stop shell beep

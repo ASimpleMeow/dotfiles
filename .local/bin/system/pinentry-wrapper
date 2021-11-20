@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# Pinentry wrapper for GnuPG to determine which pinentry application to use.
+# If Xorg service is running will use gtk2, otherwise will use curses.
+
+if [ -n "$DISPLAY" ]; then
+  exec /usr/bin/pinentry-gtk-2 "$@"
+else
+  exec /usr/bin/pinentry-curses "$@"
+fi
