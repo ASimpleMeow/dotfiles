@@ -10,4 +10,4 @@ for branch in $(git for-each-ref --format='%(refname)' refs/heads/ | cut -d'/' -
     git merge $branch -m $branch || (echo "CONFLICT MERGING $branch" && exit)
 	fi
 done
-make clean && sudo make install && git clean -fx && git checkout main
+make clean && sudo make install && git clean -fx && git checkout main && git merge --squash -X theirs master
