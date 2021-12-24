@@ -49,3 +49,4 @@ export NOTMUCH_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/notmuch-config"
 
 # ANDROID
 export _JAVA_AWT_WM_NONREPARENTING=1
+export ANDROID_PREFS_ROOT="${XDG_CONFIG_HOME:-$HOME/.config}/android"

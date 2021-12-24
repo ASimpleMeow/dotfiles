@@ -6,6 +6,7 @@
 
 alias poweroff='sudo poweroff'
 alias reboot='sudo reboot'
+alias suspend='systemctl suspend'
 alias open='xdg-open'
 alias config='/usr/bin/git --git-dir=$HOME/dev/dotfiles/ --work-tree=$HOME'
 

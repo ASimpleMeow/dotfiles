@@ -45,6 +45,7 @@ cmd zip ${{
 map <enter> shell
 map x $$f
 map X !$f
+map D delete
 map o &mimeopen $f
 map O $mimeopen --ask $f
 
