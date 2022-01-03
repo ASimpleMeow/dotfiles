@@ -3,13 +3,15 @@ set shell zsh
 set shellopts '-eu'
 set ifs "\n"
 set scrolloff 10
+$lf -remote "send $id set previewer ${XDG_CONFIG_HOME:-$HOME/.config}/lf/preview"
 
 # Commands
 cmd open ${{
     test -L $f && f=$(readlink -f $f)
-    case $(file --mime-type $f -b) in
-        text/*) $EDITOR $fx;;
-        *) for f in $fx; do setsid $OPENER $f > /dev/null 2> /dev/null & done;;
+    case $(file --mime-type $f -bL) in
+        text/*|application/json) $EDITOR "$fx" ;;
+        application/zip) unzip "$fx" ;;
+        video/*|image/*|application/pdf) xdg-open "$fx" & disown ;;
     esac
 }}
 
@@ -41,6 +43,33 @@ cmd zip ${{
     rm -rf $1
 }}
 
+cmd unarchive ${{
+  case "$f" in
+    *.zip) unzip "$f" ;;
+    *.tar.gz) tar -xzvf "$f" ;;
+    *.tar.bz2) tar -xjvf "$f" ;;
+    *.tar) tar -xvf "$f" ;;
+    *) echo "Unsupported format" ;;
+  esac
+}}
+
+
+cmd mkdir ${{
+  printf "Directory Name: "
+  read ans
+  mkdir $ans
+}}
+
+cmd fzf_jump ${{
+    res="$(find . -maxdepth 1 | fzf --reverse --header='Jump to location' | sed 's/\\/\\\\/g;s/"/\\"/g')"
+    if [ -d "$res" ]; then
+        cmd="cd"
+    else 
+        cmd="select"                                                       
+    fi
+    lf -remote "send $id $cmd \"$res\""
+}}
+
 # Bindings
 map <enter> shell
 map x $$f
@@ -48,6 +77,7 @@ map X !$f
 map D delete
 map o &mimeopen $f
 map O $mimeopen --ask $f
+map <c-f> :fzf_jump
 
 
 # define a custom 'rename' command without prompt for overwrite

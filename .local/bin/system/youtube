@@ -1,0 +1,4 @@
+#!/bin/sh
+
+xdotool click --clearmodifiers 3
+xdotool key --clearmodifiers --delay 50 w w Return

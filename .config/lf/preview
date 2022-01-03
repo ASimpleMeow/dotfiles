@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# Script arguments
+FILE_PATH="${1}"         # Full path of the highlighted file
+HEIGHT="${2}"
+
+MIMETYPE="$( file --dereference --brief --mime-type -- "${FILE_PATH}" )"
+
+case "${MIMETYPE}" in
+  application/zip) unzip -l -- "${FILE_PATH}" ;;
+  video/*|audio/*|image/*) file --brief -- "${FILE_PATH}" ;;
+  *) highlight -O ansi "${FILE_PATH}" ;;
+esac

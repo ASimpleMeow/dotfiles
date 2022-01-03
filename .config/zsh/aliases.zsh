@@ -4,7 +4,7 @@
 # System #
 ##########
 
-alias poweroff='sudo poweroff'
+alias power='sudo poweroff'
 alias reboot='sudo reboot'
 alias suspend='systemctl suspend'
 alias open='xdg-open'
